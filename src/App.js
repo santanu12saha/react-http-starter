@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 import Blog from './containers/Blog/Blog';
+import classes from './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className={classes.App}>
         <Blog />
       </div>
     );
