@@ -4,15 +4,38 @@ import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import classes from './Blog.css';
+import axios from 'axios';
 
 class Blog extends Component {
+
+    state = {
+        posts: []
+    }
+    
+    componentDidMount() {
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(response => {
+                const posts = response.data.slice(0, 4);
+                const updatedPost = posts.map(post => {
+                    return {
+                        ...post,
+                        author: 'Santanu Saha'
+                    }
+                });
+                this.setState({posts: updatedPost});
+            });
+    }
+
     render () {
+
+        const posts = this.state.posts.map(post => {
+            return <Post key={post.id} title={post.title} author={post.author}/>
+        })
+
         return (
             <div>
                 <section className={classes.Posts}>
-                    <Post />
-                    <Post />
-                    <Post />
+                   {posts}
                 </section>
                 <section>
                     <FullPost />
