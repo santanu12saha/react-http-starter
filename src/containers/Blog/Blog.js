@@ -47,8 +47,6 @@ class Blog extends Component {
                             clicked={() => this.postSelectedHandler(post.id)}/>
             });
         }
-
-        let a = 'active';
         
         return (
             <div className={classes.Blogs}>
