@@ -47,9 +47,19 @@ class Blog extends Component {
                             clicked={() => this.postSelectedHandler(post.id)}/>
             });
         }
+
+        let a = 'active';
         
         return (
-            <div>
+            <div className={classes.Blogs}>
+                <header>
+                    <nav>
+                        <ul>
+                            <li><a href="/" className={classes.active}>Home</a></li>
+                            <li><a href="/new-post">New Post</a></li>
+                        </ul>
+                    </nav>
+                </header>
                 <section className={classes.Posts}>
                    {posts}
                 </section>
