@@ -26,7 +26,9 @@ class NewPost extends Component {
         axios.post('/posts', data)
             .then(response => {
                 console.log(response);
-                this.setState({submitted: true});
+             // this.setState({submitted: true});
+             // this.props.history.push('/posts'); // push will put the reference of new post page in stack
+                this.props.history.replace('/posts'); // replace will replace the current page reference with new page in stack 
         })
 
     }
@@ -36,7 +38,7 @@ class NewPost extends Component {
         let redirect = null;
 
         if(this.state.submitted){
-            redirect = <Redirect to="/posts"/>
+            redirect = <Redirect to="/posts"/>;
         }
 
         return (
